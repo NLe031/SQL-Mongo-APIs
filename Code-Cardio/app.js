@@ -33,19 +33,18 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.use(
-  bodyParser.text()
-);
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
+
+var bodyParser = require('body-parser');
+   app.use(bodyParser.urlencoded({
+     extended: true
+   }));
+   app.use(
+     bodyParser.text() 
+   );
 
 module.exports = app;
 
